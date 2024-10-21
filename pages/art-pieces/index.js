@@ -1,7 +1,7 @@
 import ArtPieces from "@/components/ArtPieces";
 
-export default function ArtPiecesPage({ pieces }) {
-  console.log("ArtPieces");
-
-  return <ArtPieces pieces={pieces} />;
+export default function ArtPiecesPage({ pieces, handleToggleFavorite }) {
+  return (
+    <ArtPieces pieces={pieces} handleToggleFavorite={handleToggleFavorite} />
+  );
 }

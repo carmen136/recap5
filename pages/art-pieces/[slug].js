@@ -1,9 +1,7 @@
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useRouter } from "next/router";
 
-export default function ArtPiece({ pieces }) {
-  console.log("ArtPiece");
-
+export default function ArtPiece({ pieces, piecesInfo, handleToggleFavorite }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -17,11 +15,13 @@ export default function ArtPiece({ pieces }) {
   return (
     <>
       <ArtPieceDetails
+        slug={pieceData.slug}
         image={pieceData.imageSource}
         title={pieceData.name}
         artist={pieceData.artist}
         year={pieceData.year}
         genre={pieceData.genre}
+        handleToggleFavorite={handleToggleFavorite}
       />
       <button onClick={handleClick}>Back</button>
     </>

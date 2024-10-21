@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 export default function Spotlight({ image, artist }) {
-  console.log("Spotlight");
-
   return (
     <ul>
       <li>
