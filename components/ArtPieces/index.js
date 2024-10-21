@@ -1,9 +1,6 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 
-export default function ArtPieces({ pieces }) {
-  console.log("Artpieces");
-  console.log(pieces);
-
+export default function ArtPieces({ pieces, handleToggleFavorite }) {
   return (
     <ul>
       {pieces.map((piece) => (
@@ -13,6 +10,7 @@ export default function ArtPieces({ pieces }) {
           image={piece.imageSource}
           title={piece.name}
           artist={piece.artist}
+          handleToggleFavorite={handleToggleFavorite}
         />
       ))}
     </ul>
