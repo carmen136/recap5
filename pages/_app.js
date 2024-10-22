@@ -28,17 +28,25 @@ export default function App({ Component, pageProps }) {
         : [slug, ...artPiecesInfo]
     ); */
 
+    console.log(slug);
+
     setArtPiecesInfo((prevArtPiecesInfo) => {
       const existingArtPiece = prevArtPiecesInfo.find(
         (artPiece) => artPiece.slug === slug
       );
       console.log(artPiecesInfo);
       if (existingArtPiece) {
-        // Wenn das Kunstwerk bereits als Favorit markiert ist, entferne es
         return prevArtPiecesInfo.filter((artPiece) => artPiece.slug !== slug);
       } else {
-        // Andernfalls füge es als Favorit hinzu
-        return [{ slug, isFavorite: true }, ...prevArtPiecesInfo];
+        const favoritePiece = pieces.find((favPiece) => favPiece.slug === slug);
+        if (favoritePiece) {
+          return [{ ...favoritePiece, isFavorite: true }, ...prevArtPiecesInfo];
+        } else {
+          console.error(
+            "Das Kunstwerk mit dem angegebenen Slug wurde nicht gefunden."
+          );
+          return prevArtPiecesInfo;
+        }
       }
     });
   }
@@ -51,6 +59,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         pieces={pieces}
         piecesInfo={artPiecesInfo}
+        piecesFavorite={artPiecesInfo}
         handleToggleFavorite={handleToggleFavorite}
       />
     </>

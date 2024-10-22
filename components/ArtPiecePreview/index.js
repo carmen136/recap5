@@ -12,9 +12,7 @@ export default function ArtPiecePreview({
   return (
     <>
       <div>
-        <FavoriteButton
-          onToggleFavorite={() => handleToggleFavorite({ slug })}
-        />
+        <FavoriteButton onToggleFavorite={() => handleToggleFavorite(slug)} />
         <Link href={`/art-pieces/${slug}`}>
           <Image src={image} width={500} height={500} alt={title}></Image>
         </Link>
